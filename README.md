@@ -28,5 +28,5 @@ This is a **command line banking application** that allows users to:
 **Unified CLI entry point**
 - The entry point to the banking application (unified CLI - main.py) where users are prompted for inputs
 
-**Pytests **
+**Automated Testing**
 - All the individual classes have been rigorously tested using pytest testing framework. 

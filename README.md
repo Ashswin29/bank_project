@@ -1,33 +1,17 @@
 This is a **command line banking application** that allows users to:
 
 **What You Can Do**
-Input Transactions (T):
-Enter deposits or withdrawals. You’ll be asked for transaction details like date, account, and amount.
-
-Define Interest Rules (I):
-Set or update interest rates for your accounts. You’ll be prompted to enter the date, rule ID, and interest rate (as a percentage).
-
-Print Account Statements (P):
-View your transaction history and see the interest earned for a selected month.
-
-Quit Application (Q):
-Exit the program safely.
+- Input Transactions (T): Enter deposits or withdrawals. You’ll be asked for transaction details like date, account, and amount.
+- Define Interest Rules (I):Set or update interest rates for your accounts. You’ll be prompted to enter the date, rule ID, and interest rate (as a percentage).
+- Print Account Statements (P):View your transaction history and see the interest earned for a selected month.
+- Quit Application (Q): Exit the program safely.
 
 **User Guidelines & Constraints**
-Date Format:
-Enter dates as YYYYMMdd (e.g., 20250101 for January 1, 2025).
-
-Account & Rule ID:
-These are free-form text fields; you can use any string.
-
-Interest Rate:
-Must be greater than 0 and less than 100.
-
-Rule Updates:
-Only the latest rule for a given day is kept.
-
-Transaction Amount:
-Must be greater than 0.
+- Date Format: Enter dates as YYYYMMdd (e.g., 20250101 for January 1, 2025).
+- Account & Rule ID: These are free-form text fields; you can use any string.
+- Interest Rate: Must be greater than 0 and less than 100.
+- Rule Updates: Only the latest rule for a given day is kept.
+- Transaction Amount: Must be greater than 0.
 
 **Features:**
 - Input Transactions: Adds deposits and allows withdrawals

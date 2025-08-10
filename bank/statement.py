@@ -7,7 +7,8 @@ class StatementGenerator:
 
     def __init__(self, enable_logging = True):
         self.enable_logging = enable_logging
-
+        
+    #allows user to easily toggle logging on or off
     def _log(self, message):
         if self.enable_logging:
             print(message)
@@ -33,13 +34,18 @@ class StatementGenerator:
 
             if year_month_input_formatted in account_transactions_df['month'].values:
 
+                #preprocess the column types before calculating/ applying transformations
                 account_transactions_df['year'] = account_transactions_df['date'].dt.to_period('Y')
                 account_transactions_df['amount'] = account_transactions_df['amount'].astype(float)
+
+                #reorder the date so that shift function and cumsum works correctly 
                 account_transactions_df = account_transactions_df.sort_values(by='date', ascending = True, inplace = False)
                 account_transactions_df.rename(columns={"date": "transaction_date_start"}, inplace = True)
                 account_transactions_df['transaction_date_end'] = account_transactions_df['transaction_date_start'].shift(-1).dt.date #- pd.Timedelta(days=1)
                 account_transactions_df['transaction_date_end'] = account_transactions_df['transaction_date_end'].fillna(datetime.date(2100, 12, 31))
                 account_transactions_df['transaction_date_end'] = pd.to_datetime(account_transactions_df['transaction_date_end'])
+
+                #apply the modifying amount function aka multiplyin by -1 for withdrawals before calculating the balance (cumulative sum)
                 account_transactions_df['amount'] = account_transactions_df.apply(self.modifying_amount, axis=1)
                 account_transactions_df['balance'] = account_transactions_df['amount'].cumsum()
 

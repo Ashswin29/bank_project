@@ -1,9 +1,9 @@
-#entry input point (need to reinvoke it later if no transactions are entered)
+
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-
+#bank application main entry point
 def main():
     first_run = True
 

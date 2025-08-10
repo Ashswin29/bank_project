@@ -1,6 +1,10 @@
 import json
 import pandas as pd
-# it is a service class, not a data container (more practical for banking operations where there we will be processing many different transactions)
+
+# This class is responsible for handling all transaction-related operations in the banking application. 
+# It provides methods for logging transactions, checking account balances, validating withdrawals, 
+# generating transaction IDs, and displaying transaction history.
+
 class TransactionManager:
     def __init__(self, enable_logging = True):
         self.enable_logging = enable_logging

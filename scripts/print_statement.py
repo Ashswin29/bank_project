@@ -17,18 +17,21 @@ def print_statement(transactions_file_path, interest_rule_file_path):
 
 
     #check if account exists and if it has trasactions for that month
-
-
     with open(transactions_file_path, 'r') as transactions_file:
         account_transactions_df, account_transactions_df2 = statement_generator.generate_account_statement(account_input, transactions_file, year_month_input_formatted)
 
+
     with open(interest_rule_file_path, 'r') as interest_file:
+        #check if interest rules exists 
         interest_rule_df = statement_generator.generate_interest_rules(interest_file)
-
+        
+        # cross join the transactions with interest rule dataframe 
         merged_df = statement_generator.cross_join_transactions_interest(account_transactions_df2, interest_rule_df)
-
+        
+        # calculate the annualized interest for the month
         merged_desired_month, merged_with_interest = statement_generator.calculate_annualized_interest(merged_df, year_month_input_formatted)
 
+        # display the account statement
         statement_generator.display_account_statement(account_transactions_df, year_month_input_formatted, merged_desired_month, merged_with_interest)
 
 if __name__ == "__main__":

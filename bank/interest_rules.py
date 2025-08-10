@@ -1,6 +1,8 @@
 import json
 import pandas as pd
 
+ #  class provides methods to add or update interest rules and display them in a user-friendly format. 
+ #  It ensures that only the latest rule for each date is stored, maintaining data integrity.
 class InterestRateManager:
 
     def __init__(self, enable_logging= True):
@@ -10,6 +12,8 @@ class InterestRateManager:
         if self.enable_logging:
             print(message)
 
+    #Adds a new interest rule or updates an existing rule for a given date. 
+    #Ensures only the latest rule for each day is kept.
     def upsert_interest_rule(self, file, interest_state_file, date_input, rule_id_input, rate_input):
         
         if date_input in interest_state_file.keys():
@@ -28,6 +32,7 @@ class InterestRateManager:
             json.dump(interest_state_file, file, indent = 4)
             file.truncate()
 
+    #Displays all interest rules in a formatted table, sorted by date.
     def display_interest_rules(self, interest_state_file):
         interest_rule_df = pd.DataFrame(interest_state_file).T.reset_index() #need to transpose and reset index if not it errors out saying 2 elements but given 3
         interest_rule_df.columns = ["Date", "Rule ID", "Rate (%)"]

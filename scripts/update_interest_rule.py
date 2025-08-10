@@ -20,6 +20,7 @@ def input_interest_rule(interest_rule_file_path):
     input_validator.validate_date_input(date_input)
     input_validator.validate_rate_input(rate_input)
 
+    #4. upsert and display the interest rules 
     with open(interest_rule_file_path, 'r+') as file:
         interest_state_file = json.load(file)
 
